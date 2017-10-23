@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Dogdisplay.css'
+import Transition from "react-transition-group"
 
 class Dogdisplay extends Component {
     constructor(props){
@@ -9,6 +10,7 @@ class Dogdisplay extends Component {
         count: 0,
         }
         this.nextPic = this.nextPic.bind(this);
+
     }
 
 
@@ -18,7 +20,7 @@ class Dogdisplay extends Component {
         let nextCount = this.state.count + 1
         nextCount = nextCount < this.props.dogArr.length ? nextCount: 0
 
-        this.setState({count: nextCount});
+        this.setState({count: nextCount, in: true});
         
 
 
@@ -29,7 +31,7 @@ class Dogdisplay extends Component {
         return (
            <div className="img-background">
                
-                <img className= "Main-img" src={this.props.dogArr[this.state.count]}></img>       
+                <img className= "Main-img" src={this.props.dogArr[this.state.count]}></img> 
                 <button className="btn btn-info" onClick={() => this.nextPic() }>Next</button>
                   
         </div> 

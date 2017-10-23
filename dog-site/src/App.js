@@ -14,7 +14,6 @@ class App extends Component {
       selectedDog: undefined,
       dogNames: undefined,
       hidden: true,
-      styleClass : null,
       dogArr: [],
 
     }
@@ -30,7 +29,7 @@ componentWillMount(){
 }
 
 handleChange(event) {
-  this.setState({ hidden: false, styleClass: "transition" });
+  this.setState({ hidden: false});
   axios.get(`http://localhost:3000/api/dogs/${event.target.value}`).then(res => {
     this.setState({dogArr: res.data})
 })
@@ -52,7 +51,7 @@ handleChange(event) {
           </h2>
           <Alldogs dogNames={this.state.dogNames} handleChange = {this.handleChange}/>
           { this.state.hidden ? "" : 
-          <Dogdisplay className={this.state.styleClass} selected={this.state.selectedDog} dogArr={this.state.dogArr}/>
+          <Dogdisplay selected={this.state.selectedDog} dogArr={this.state.dogArr}/>
           }
          
      </div>
