@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Dogdisplay.css'
-import Transition from "react-transition-group"
+import './Dogdisplay.css';
 
 class Dogdisplay extends Component {
     constructor(props){

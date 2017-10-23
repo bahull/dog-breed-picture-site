@@ -28,6 +28,10 @@ componentWillMount(){
   });
 }
 
+componentDidMount(){
+  setTimeout(()=> alert("This is gonna be rough.. Hold on.... It will be over soon"), 2500)
+}
+
 handleChange(event) {
   this.setState({ hidden: false});
   axios.get(`http://localhost:3000/api/dogs/${event.target.value}`).then(res => {
@@ -37,12 +41,11 @@ handleChange(event) {
 
 
   render() {
-  console.log(this.state)
     return (
   <div className="App">
         <header className="App-header">
                  <img src={logo} className="App-logo" alt="logo" />
-                 <h1 className="App-title">Your pawfect pet</h1>
+                 <h1 className="App-title">Pawfect pet</h1>
                  <Moment format="MM/DD/YYYY">{this.props.dateToFormat}</Moment>   
          </header>
      <div className="App-intro">
