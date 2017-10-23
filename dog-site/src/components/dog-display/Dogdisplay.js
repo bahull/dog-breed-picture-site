@@ -6,23 +6,33 @@ class Dogdisplay extends Component {
     constructor(props){
         super(props)
         this.state = {
-        dogObj: [],
-
+        count: 0,
         }
+        this.nextPic = this.nextPic.bind(this);
     }
 
-    componentWillReceiveProps(props){
-         axios.get(`http://localhost:3000/api/dogs/${this.props.selectedDog}`).then(res => {
-                            this.setState({dogObj: res.data})
-                         })
-                }
+
+
+   
+    nextPic(event){
+        let nextCount = this.state.count + 1
+        nextCount = nextCount < this.props.dogArr.length ? nextCount: 0
+
+        this.setState({count: nextCount});
+        
+
+
+    }
+
     render() {
-        let count = 0;
-        console.log(this.state.dogObj[0])
+        console.log(this.props.dogArr)
         return (
-            <div className="img-background">
-                <img className= "Main-img" src={this.state.dogObj[count]} alt="Dogs"></img>         
-            </div>
+           <div className="img-background">
+               
+                <img className= "Main-img" src={this.props.dogArr[this.state.count]}></img>       
+                <button className="btn btn-info" onClick={() => this.nextPic() }>Next</button>
+                  
+        </div> 
                 );
             }
 }

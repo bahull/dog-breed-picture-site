@@ -5,16 +5,19 @@ class Alldogs extends Component {
     constructor(props){
         super(props)
         this.state = {
-        }
+            word: "Breed"
     }
-    
+}
    
 
     render() {
      const { dogNames } = this.props
         return (
             <div>
-                <select className = "dogNames" onChange={this.props.handleChange}>
+                <select className="form-control dogNames" onChange={this.props.handleChange}>
+
+                    <option value="" disabled selected>Select a Breed</option>
+
                     { dogNames &&  dogNames.map(val => {
                      return   <option key= {val}> {val} </option>
                     })}

@@ -4,7 +4,6 @@ import './App.css';
 import Moment from 'react-moment';
 import axios from "axios";
 import Alldogs from "./components/all-dogs/Alldogs"
-import Randomdog from "./components/random-dog/Randomdog"
 import Dogdisplay from "./components/dog-display/Dogdisplay"
 
 class App extends Component {
@@ -13,10 +12,10 @@ class App extends Component {
 
     this.state= {
       selectedDog: undefined,
-      randomLeft: undefined,
-      randomRight: undefined,
-      dogName: undefined,
-      hidden: true, 
+      dogNames: undefined,
+      hidden: true,
+      styleClass : null,
+      dogArr: [],
 
     }
 
@@ -24,22 +23,22 @@ this.handleChange = this.handleChange.bind(this);
   }
 
 
-componentDidMount(){
+componentWillMount(){
   axios.get("http://localhost:3000/api/dogs").then(response => {
     this.setState({dogNames: Object.keys(response.data.message) })
-     
   });
 }
 
 handleChange(event) {
-  this.setState({selectedDog: event.target.value});
+  this.setState({ hidden: false, styleClass: "transition" });
+  axios.get(`http://localhost:3000/api/dogs/${event.target.value}`).then(res => {
+    this.setState({dogArr: res.data})
+})
 }
 
 
-
-
   render() {
-  console.log(this.state.selectedDog, this.state)
+  console.log(this.state)
     return (
   <div className="App">
         <header className="App-header">
@@ -49,15 +48,17 @@ handleChange(event) {
          </header>
      <div className="App-intro">
            <h2>
-               We strive to help you find the Pawfect Match with your Pawfect Pet.
+               We're here to find your Pawfect pet
           </h2>
+          <Alldogs dogNames={this.state.dogNames} handleChange = {this.handleChange}/>
+          { this.state.hidden ? "" : 
+          <Dogdisplay className={this.state.styleClass} selected={this.state.selectedDog} dogArr={this.state.dogArr}/>
+          }
+         
      </div>
-         <Alldogs dogNames = {this.state.dogNames} handleChange = {this.handleChange}/>
-         <Dogdisplay selectedDog = {this.state.selectedDog} />
-         {
-       this.state.hidden ? "" : "Hey, how are you?"
-     }
-  </div>
+       
+        
+     </div>
    
     );
   }
