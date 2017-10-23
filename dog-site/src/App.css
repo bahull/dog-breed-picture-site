@@ -1,0 +1,73 @@
+/* *{
+  height: 900px;
+} */
+.App {
+  background-image: url("./pexels-photo-594583.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  padding: 1%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 12s linear;
+  height: 50px;
+  align-items: center;
+
+}
+
+.App-header {
+  background-color: steelblue;
+  border-radius: 3%;
+  height: 80px;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  display: flex
+}
+
+.App-title {
+  font-size: 1.8em;
+  text-align: center;
+  margin: auto;
+  color: rgb(253, 244, 180);
+  font-weight: 700;
+}
+
+h2{
+  font-size: large;
+  font-weight: 700;
+  font-size: 1.3em;
+  text-align:center;
+  top: 0px;
+
+}
+.leftPicIntro{
+  width: 10%;
+  height: 50%;
+}
+.App-intro {
+  height: 300px;
+  font-size: large;
+  font-size: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.rightPicIntro{
+  width: 10%;
+  height: 50%;
+  background: red;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
